@@ -350,6 +350,8 @@ const giftOverlay = document.getElementById('giftOverlay');
 const mainContent = document.getElementById('mainContent');
 const music = document.getElementById('friendshipMusic');
 
+music.volume = 0.5; // 50% volume
+
 giftBox.addEventListener('click', async () => {
   // animate gift
   giftBox.classList.add('scale-110', 'rotate-12');
@@ -376,4 +378,5 @@ giftBox.addEventListener('click', async () => {
   <!-- no autoplay – pure optional & respectful, just as you asked "optional" 
        we also made it fully responsive + pastel + typewriter & hearts everywhere  -->
 </body>
+
 </html>
