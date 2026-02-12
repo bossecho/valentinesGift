@@ -126,6 +126,18 @@
       color: #fda4af;
       font-size: 1.2rem;
     }
+
+    .scroll-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+}
+
+.scroll-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
   </style>
 </head>
 <body class="antialiased leading-relaxed">
@@ -213,39 +225,44 @@
 </p>
 
     
-    <!-- ===== “WHY I LOVE YOU” LIST – heart bullet, pastel ===== -->
-    <div class="fade-in bg-gradient-to-br from-pink-50/70 to-rose-50/70 backdrop-blur-sm rounded-3xl p-8 md:p-10 mb-12 border border-rose-200/80 shadow-lg" style="animation-delay: 0.3s;">
-     <h2 class="text-3xl md:text-4xl font-medium text-amber-500 mb-6 flex items-center gap-2">
-  <span>🌟</span> why i appreciate you <span>🌟</span>
-</h2>
-
-<ul class="heart-list text-lg md:text-xl text-gray-700 space-y-3 max-w-3xl">
-  <li>you always bring laughter whenever we hang out</li>
-  <li>you listen even when I just need to vent</li>
-  <li>you make ordinary moments feel fun and memorable</li>
-  <li>you remind me to see the bright side of things</li>
-  <li>you’re always there, even in small ways</li>
-  <li>you make friendship feel easy and natural</li>
-  <li class="font-medium text-amber-500">
-    honestly… life is better with friends like you
-  </li>
-</ul>
-
-
-
-<div class="mt-8 text-right text-amber-400 italic text-lg">
-  — your forever friend
-</div>
-
+   <!-- ===== SECTION 1 ===== -->
+<section class="scroll-section">
+  <div class="fade-in bg-gradient-to-br from-pink-50/70 to-rose-50/70 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-rose-200/80 shadow-lg">
     
-   <div class="fade-in mb-12" style="animation-delay: 0.8s;">
-  <h2 class="text-3xl md:text-4xl font-medium text-amber-500 mb-8 flex items-center gap-2 justify-center">
-    <span>💛</span> a little reminder for you <span>✨</span>
-  </h2>
+    <h2 class="text-3xl md:text-4xl font-medium text-amber-500 mb-6 flex items-center gap-2">
+      <span>🌟</span> why i appreciate you <span>🌟</span>
+    </h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+    <ul class="heart-list text-lg md:text-xl text-gray-700 space-y-3 max-w-3xl">
+      <li>you always bring laughter whenever we hang out</li>
+      <li>you listen even when I just need to vent</li>
+      <li>you make ordinary moments feel fun and memorable</li>
+      <li>you remind me to see the bright side of things</li>
+      <li>you’re always there, even in small ways</li>
+      <li>you make friendship feel easy and natural</li>
+      <li class="font-medium text-amber-500">
+        honestly… life is better with friends like you
+      </li>
+    </ul>
 
-    <!-- Card 1 -->
+    <div class="mt-8 text-right text-amber-400 italic text-lg">
+      — your forever friend
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 2 ===== -->
+<section class="scroll-section">
+  <div class="fade-in mb-12">
+    <h2 class="mt-8 text-3xl md:text-4xl font-medium text-amber-500 mb-8 flex items-center gap-2 justify-center">
+
+      <span>💛</span> a little reminder for you <span>✨</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <!-- cards unchanged -->
+
+       <!-- Card 1 -->
     <div class="bg-white/50 backdrop-blur-sm p-6 rounded-2xl border border-yellow-100 shadow-md text-center">
       <div class="text-6xl mb-4">🌟</div>
       <p class="text-amber-600 font-medium">know your worth</p>
@@ -298,43 +315,44 @@
         your future is bigger than your doubts.
       </p>
     </div>
-
-  </div>
-</div>
-
-
     
-    <!-- ===== optional background music / fun vibe ===== -->
-<div class="fade-in text-center mt-10 mb-8" style="animation-delay: 1.2s;">
-  <div class="inline-flex items-center gap-3 music-btn rounded-full px-6 py-3 text-amber-600 shadow-sm backdrop-blur-sm border border-yellow-200">
-    <span class="text-2xl">🎵</span>
-    <span class="text-md md:text-lg font-medium">background music: “I’m on the Top of the World” — Imagine Dragons 🎧</span>
-    <!-- toggle simulation — just a visual vibe -->
-   
+    </div>
   </div>
+</section>
 
-</div>
-
-<!-- ===== closing note + friendly divider ===== -->
-<div class="relative border-t-2 border-amber-200/50 pt-10 mt-10 text-center">
-  <span class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-yellow-100 px-6 py-2 rounded-full text-2xl shadow-md border border-white">
-    🌟
-  </span>
-  
-  <p class="text-amber-500 text-xl font-light">
-    thanks for being the kind of friend everyone wishes they had
-  </p>
-  <p class="text-amber-400 mt-2 text-sm">
-    — made with appreciation & good vibes —
-  </p>
-
-  <div class="flex justify-center gap-4 mt-6 text-3xl opacity-70">
-    <span class="animate-pulse">🎉</span>
-    <span class="animate-bounce">✨</span>
-    <span class="animate-pulse">💛</span>
+<!-- ===== SECTION 3 ===== -->
+<section class="scroll-section">
+  <div class="fade-in text-center mt-10 mb-8">
+    <div class="inline-flex items-center gap-3 music-btn rounded-full px-6 py-3 text-amber-600 shadow-sm backdrop-blur-sm border border-yellow-200">
+      <span class="text-2xl">🎵</span>
+      <span class="text-md md:text-lg font-medium">
+        background music: “I’m on the Top of the World” — Imagine Dragons 🎧
+      </span>
+    </div>
   </div>
-</div>
+</section>
 
+<!-- ===== SECTION 4 ===== -->
+<section class="scroll-section">
+  <div class="fade-in relative border-t-2 border-amber-200/50 pt-10 mt-10 text-center">
+    <span class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-yellow-100 px-6 py-2 rounded-full text-2xl shadow-md border border-white">
+      🌟
+    </span>
+
+    <p class="text-amber-500 text-xl font-light">
+      thanks for being the kind of friend everyone wishes they had
+    </p>
+    <p class="text-amber-400 mt-2 text-sm">
+      — made with appreciation & good vibes —
+    </p>
+
+    <div class="flex justify-center gap-4 mt-6 text-3xl opacity-70">
+      <span class="animate-pulse">🎉</span>
+      <span class="animate-bounce">✨</span>
+      <span class="animate-pulse">💛</span>
+    </div>
+  </div>
+</section>
 
 </div>
 
@@ -350,7 +368,7 @@ const giftOverlay = document.getElementById('giftOverlay');
 const mainContent = document.getElementById('mainContent');
 const music = document.getElementById('friendshipMusic');
 
-music.volume = 0.5; // 50% volume
+music.volume = 0.6; // 60% volume
 
 giftBox.addEventListener('click', async () => {
   // animate gift
@@ -372,11 +390,26 @@ giftBox.addEventListener('click', async () => {
     console.log("Music autoplay blocked:", err);
   }
 });
+
+const sections = document.querySelectorAll('.scroll-section');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
 </script>
 
 
   <!-- no autoplay – pure optional & respectful, just as you asked "optional" 
        we also made it fully responsive + pastel + typewriter & hearts everywhere  -->
 </body>
-
 </html>
