@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>🌟 digital appreciation letter · for my friend and family</title>
+  <title>🌟 digital appreciation letter · for my friend</title>
 
   <!-- Tailwind via CDN (lightweight) + custom soft pastel extras -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -138,6 +138,7 @@
   transform: translateY(0);
 }
 
+
   </style>
 </head>
 <body class="antialiased leading-relaxed">
@@ -182,6 +183,49 @@
 .animate-float {
   animation: float 6s infinite ease-in-out;
 }
+
+
+@keyframes popUp {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pop-up {
+  animation: popUp 0.8s ease-out forwards;
+}
+
+.falling-heart {
+  position: fixed;
+  top: -50px;
+  font-size: 1.2rem;
+  opacity: 0.8;
+  pointer-events: none;
+  animation: fall linear forwards;
+  z-index: 20;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
 </style>
 
 
@@ -201,18 +245,17 @@
   <!-- soft translucent floating overlay to keep content readable -->
   <div class="content max-w-5xl mx-auto px-5 py-10 md:py-16 lg:py-20 relative">
     
- <h1 class="text-3xl md:text-5xl font-semibold text-amber-400 drop-shadow-sm">
-  to my awesome friend/family
+ <h1 class="text-3xl md:text-5xl font-semibold text-amber-400 drop-shadow-sm pop-up">
+  to my awesome friend
 </h1>
 
-<div class="text-5xl md:text-7xl font-bold mt-2 mb-4 leading-tight text-center">
+<div class="text-5xl md:text-7xl font-bold mt-2 mb-4 leading-tight text-center pop-up" style="animation-delay: 0.2s;">
   <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-red-400">
     HAPPY VALENTINE’S DAY!, 💖
   </span>
 </div>
 
-
-<div class="flex justify-center">
+<div class="flex justify-center pop-up" style="animation-delay: 0.4s;">
   <div class="text-xl md:text-2xl text-amber-600/90 bg-yellow-50/70 px-6 py-3 rounded-full inline-block border border-yellow-200 shadow-sm max-w-full">
     <span class="typewriter font-medium">
       life is better with a friend like you
@@ -220,9 +263,10 @@
   </div>
 </div>
 
-<p class="text-gray-500 text-lg mt-6 italic">
+<p class="text-gray-500 text-lg mt-6 italic pop-up" style="animation-delay: 0.6s;">
   ✦ friends are the family we choose ✦
 </p>
+
 
     
    <!-- ===== SECTION 1 ===== -->
@@ -360,6 +404,8 @@
   — made with 💖 by <span class="font-semibold animate-pulse">BossEcho</span> —
 </div>
 
+
+
 <audio id="friendshipMusic" src="top.mp3" preload="auto"></audio>
 
 <script>
@@ -383,7 +429,7 @@ giftBox.addEventListener('click', async () => {
   }, 800);
 
   // jump to 43 seconds and play
-  music.currentTime = 43;
+  music.currentTime = 46;
   try {
     await music.play();
   } catch (err) {
@@ -406,6 +452,46 @@ const sections = document.querySelectorAll('.scroll-section');
   sections.forEach(section => {
     observer.observe(section);
   });
+
+  function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('falling-heart');
+  heart.style.left = Math.random() * window.innerWidth + 'px';
+  heart.style.fontSize = (12 + Math.random() * 18) + 'px';
+  heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+  heart.style.color = ['#fda4af', '#ffb6b9', '#ffc0cb'][Math.floor(Math.random() * 3)];
+
+  heart.textContent = ['💖','💗','💓','💕'][Math.floor(Math.random() * 4)];
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000); // remove after animation
+}
+
+// spawn multiple hearts every 300ms for 3 seconds
+function spawnHearts() {
+  const interval = setInterval(createHeart, 1000);
+  setTimeout(() => clearInterval(interval), 10000);
+}
+
+// trigger hearts after gift opens
+giftBox.addEventListener('click', async () => {
+  giftBox.classList.add('scale-110', 'rotate-12');
+
+  setTimeout(() => {
+    giftOverlay.classList.add('opacity-0', 'pointer-events-none');
+    mainContent.classList.remove('hidden');
+    mainContent.classList.add('opacity-0');
+    setTimeout(() => mainContent.classList.remove('opacity-0'), 50);
+
+    // start falling hearts
+    spawnHearts();
+
+  }, 800);
+
+  
+});
 </script>
 
 
@@ -413,4 +499,3 @@ const sections = document.querySelectorAll('.scroll-section');
        we also made it fully responsive + pastel + typewriter & hearts everywhere  -->
 </body>
 </html>
-
