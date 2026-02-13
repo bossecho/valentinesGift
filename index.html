@@ -138,16 +138,54 @@
   transform: translateY(0);
 }
 
+.count-number {
+  display: inline-block;
+  min-width: 60px;
+  text-align: center;
+}
+
+.count-label {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #fda4af;
+  margin-top: 4px;
+}
+
 
   </style>
 </head>
 <body class="antialiased leading-relaxed">
+  
+
 
 <!-- ========== GIFT OVERLAY (Enhanced) ========== -->
 <div id="giftOverlay" class="fixed inset-0 flex flex-col items-center justify-center z-50 transition-all duration-1000 bg-gradient-to-br from-yellow-100/90 via-pink-50/80 to-rose-100/90 backdrop-blur-sm">
 
+  <!-- ===== COUNTDOWN (Cinematic Style) ===== -->
+<div id="countdownContainer" class="text-center">
+  <p class="text-amber-700 text-lg mb-6 tracking-widest uppercase">
+    unlocking in
+  </p>
+
+  <div id="countdownTimer"
+       class="text-4xl md:text-6xl font-bold text-rose-400 drop-shadow-lg">
+    loading...
+  </div>
+
+  <p class="text-rose-400 mt-6 text-sm italic">
+    february 14, 2026 · 12:00 AM 💖
+  </p>
+</div>
+
+
+
+
   
-  <!-- gift box container -->
+<!-- gift container (hidden initially) -->
+<div id="giftContainer" class="opacity-0 scale-75 transition-all duration-500">
+  
+    <!-- gift box container -->
   <div id="giftBox" class="relative w-48 h-48 rounded-[40px] flex items-center justify-center cursor-pointer group shadow-2xl transform transition-all duration-500 hover:scale-105 hover:rotate-3">
     
     <!-- gift emoji -->
@@ -164,6 +202,9 @@
       tap to unwrap 💝
     </span>
   </div>
+
+</div>
+
 
   <!-- just for you text -->
   <p class="text-amber-800/70 text-md mt-10 animate-bounce bg-white/30 px-8 py-3 rounded-full backdrop-blur-sm border border-white/50 shadow-md">
@@ -401,7 +442,10 @@
 </div>
 
 <div class="text-center mt-12 mb-6 text-sm text-amber-300 italic relative">
-  — made with 💖 by <span class="font-semibold animate-pulse">BossEcho</span> —
+  — made with 💖 by 
+  <a href="https://github.com/bossecho" target="_blank" class="font-semibold animate-pulse hover:underline">
+    BossEcho
+  </a> —
 </div>
 
 
@@ -491,12 +535,64 @@ giftBox.addEventListener('click', async () => {
   }, 800);
 
   
+  
 });
+
+const unlockDate = new Date("2026-02-14T00:00:00+08:00").getTime();
+
+/* 🕒 SET UNLOCK TIMER (10 seconds) testing purposes */
+//const unlockDate = Date.now() + (10 * 1000);
+
+const countdownTimer = document.getElementById("countdownTimer");
+const countdownContainer = document.getElementById("countdownContainer");
+
+
+function updateCountdown() {
+
+  const now = new Date().getTime();
+  const distance = unlockDate - now;
+
+  if (distance <= 0) {
+    countdownTimer.innerHTML = "💖 It's Time! 💖";
+
+    setTimeout(() => {
+     countdownContainer.classList.add("hidden");
+
+// Show the whole container
+const giftContainer = document.getElementById("giftContainer");
+giftContainer.classList.remove("opacity-0", "scale-75");
+giftContainer.classList.add("opacity-100", "scale-100");
+
+// Animate the gift
+giftBox.classList.add("pop-up");
+
+    }, 1500);
+
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  countdownTimer.innerHTML =
+    days + "d " +
+    hours + "h " +
+    minutes + "m " +
+    seconds + "s";
+}
+
+updateCountdown(); // run immediately
+setInterval(updateCountdown, 1000); // update every second
+
+
 </script>
+
+
 
 
   <!-- no autoplay – pure optional & respectful, just as you asked "optional" 
        we also made it fully responsive + pastel + typewriter & hearts everywhere  -->
 </body>
 </html>
-
